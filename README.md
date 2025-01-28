@@ -43,5 +43,5 @@ Antes de executar o programa, certifique-se de que os seguintes requisitos estã
 
 1. **Clone o repositório**  
    ```bash
-   git clone <URL-do-repositório>
-   cd <nome-do-repositório>
+   git clone https://github.com/viniciusBalbi/VideoTranslate.git
+   cd https://github.com/viniciusBalbi/VideoTranslate.git
