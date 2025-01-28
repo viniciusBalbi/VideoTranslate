@@ -7,23 +7,12 @@ from googletrans import Translator
 from gtts import gTTS
 from moviepy.editor import VideoFileClip, AudioFileClip
 import tempfile
-from pytube import YouTube
 import asyncio
 
 class VideoTranslator:
     def __init__(self):
         self.whisper_model = whisper.load_model("turbo")
         self.translator = Translator()
-
-    def download_youtube_video(self, url):
-        try:
-            yt = YouTube(url)
-            stream = yt.streams.filter(progressive=True, file_extension='mp4').first()
-            temp_path = os.path.join(tempfile.gettempdir(), 'temp_video.mp4')
-            stream.download(output_path=tempfile.gettempdir(), filename='temp_video.mp4')
-            return temp_path
-        except Exception as e:
-            raise gr.Error(f"Error downloading YouTube video: {str(e)}")
 
     def transcribe_audio(self, video_path):
         try:
@@ -55,10 +44,7 @@ class VideoTranslator:
 
     async def process_video(self, video_input, target_lang):
         try:
-            if isinstance(video_input, str) and "youtube.com" in video_input:
-                video_path = self.download_youtube_video(video_input)
-            else:
-                video_path = video_input
+            video_path = video_input
             
             transcription, detected_lang = self.transcribe_audio(video_path)
             
@@ -90,12 +76,11 @@ def create_interface():
         with gr.Row():
             with gr.Column():
                 video_input = gr.Video(label="Upload Video")
-                youtube_input = gr.Textbox(label="Or paste YouTube URL")
                 
                 target_lang = gr.Dropdown(
                     choices=["en", "es", "fr", "it", "de", "pt", "ja", "ko", "zh-cn"],
                     label="Target Language",
-                    value=" "
+                    value="en"
                 )
                 
                 process_btn = gr.Button("Process Video")
@@ -105,17 +90,16 @@ def create_interface():
                 original_text = gr.Textbox(label="Original Transcription")
                 translated_text = gr.Textbox(label="Translated Text")
         
-        def process_wrapper(video, url, lang):
-            input_source = url if url else video
-            if not input_source:
-                raise gr.Error("Please provide either a video file or YouTube URL")
+        def process_wrapper(video, lang):
+            if not video:
+                raise gr.Error("Please upload a video file")
 
-            output_path, trans, translated = asyncio.run(translator.process_video(input_source, lang))
+            output_path, trans, translated = asyncio.run(translator.process_video(video, lang))
             return output_path, trans, translated
         
         process_btn.click(
             fn=process_wrapper,
-            inputs=[video_input, youtube_input, target_lang],
+            inputs=[video_input, target_lang],
             outputs=[output_video, original_text, translated_text]
         )
     
