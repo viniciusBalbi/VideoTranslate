@@ -45,3 +45,18 @@ Antes de executar o programa, certifique-se de que os seguintes requisitos estã
    ```bash
    git clone https://github.com/viniciusBalbi/VideoTranslate.git
    cd https://github.com/viniciusBalbi/VideoTranslate.git
+
+2. **Crie um ambiente virtual**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate
+
+3. **Crie um ambiente virtual**
+   ```bash
+   pip install gradio==5.13.0 openai-whisper torch==2.5.1 numpy==1.22.0 googletrans==4.0.2 gtts==2.5.4 moviepy==1.0.3
+4. **Instale o FFmpeg**
+Certifique-se de que o FFmpeg está instalado. Verifique executando:
+ ```bash
+   ffmpeg -version
+Caso não esteja instalado, siga as instruções em https://ffmpeg.org/download.html.
+   
