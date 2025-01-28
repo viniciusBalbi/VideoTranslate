@@ -57,7 +57,7 @@ Antes de executar o programa, certifique-se de que os seguintes requisitos estã
 4. **Instale o FFmpeg**
 Certifique-se de que o FFmpeg está instalado. Verifique executando:
  ```bash
-   ffmpeg -version
-
+   ffmpeg -version 
+```
 Caso não esteja instalado, siga as instruções em https://ffmpeg.org/download.html.
    
