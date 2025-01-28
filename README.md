@@ -32,15 +32,16 @@ Antes de executar o programa, certifique-se de que os seguintes requisitos estã
 - **FFmpeg instalado** (necessário para processamento de vídeos com MoviePy)
 - As seguintes bibliotecas Python:
   - `gradio==5.13.0`
-  - `gTTS==2.5.4`
   - `openai-whisper`
-  - `googletrans==4.0.2`
-  - `moviepy==1.0.3`
+  - `torch==2.5.1`
   - `numpy==1.22.0`
+  - `googletrans==4.0.2`
+  - `gTTS==2.5.4`
+  - `moviepy==1.0.3`
 
 ### Instalação
 
 1. **Clone o repositório**  
    ```bash
-   git clone https://github.com/viniciusBalbi/VideoTranslate.git
-   cd https://github.com/viniciusBalbi/VideoTranslate.git
+   git clone <URL-do-repositório>
+   cd <nome-do-repositório>
