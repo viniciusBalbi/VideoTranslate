@@ -1,33 +1,46 @@
-# Video Translation App
+# Aplicativo de Tradução de Vídeos
 
-Uma aplicação minimalista para tradução de vídeos em português para inglês (ou outros idiomas) com síntese de voz e sincronização labial. O aplicativo utiliza inteligência artificial para transcrever o áudio do vídeo, traduzir o texto para o idioma-alvo e gerar um vídeo com áudio traduzido sincronizado.
+Este programa é uma aplicação minimalista que utiliza inteligência artificial para processar e traduzir vídeos. Ele transcreve o áudio do vídeo, traduz o texto para um idioma escolhido e gera um novo vídeo com áudio traduzido e sincronizado.
 
-## Funcionalidades
+## Como Funciona
 
-- **Transcrição de Áudio:** Extrai automaticamente o áudio do vídeo e o transcreve usando o modelo Whisper da OpenAI.
-- **Tradução de Texto:** Traduz o texto transcrito para um idioma escolhido utilizando a biblioteca Google Translate.
-- **Síntese de Voz:** Gera áudio do texto traduzido usando Google Text-to-Speech (gTTS).
-- **Processamento de Vídeo:** Sincroniza o novo áudio traduzido ao vídeo original, gerando um vídeo final com áudio e texto traduzidos.
-- **Interface Intuitiva:** Interface amigável baseada em Gradio para upload de vídeos e escolha do idioma de destino.
+O aplicativo segue um fluxo simples e intuitivo:
 
-## Tecnologias e Bibliotecas Utilizadas
+1. **Upload do Vídeo**  
+   O usuário faz o upload de um vídeo diretamente na interface da aplicação.
 
-- **[Gradio (v5.13.0)](https://www.gradio.app/):** Interface gráfica para interação com o usuário.
-- **[OpenAI Whisper](https://github.com/openai/whisper):** Modelo de IA para transcrição de áudio.
-- **[gTTS (v2.5.4)](https://github.com/pndurette/gTTS):** Biblioteca para conversão de texto em áudio.
-- **[Googletrans (v4.0.2)](https://py-googletrans.readthedocs.io/en/latest/):** API de tradução de idiomas.
-- **[MoviePy (v1.0.3)](https://zulko.github.io/moviepy/):** Processamento e edição de vídeos.
-- **[NumPy (v1.22.0)](https://numpy.org/):** Manipulação de arrays e cálculos numéricos.
+2. **Transcrição de Áudio**  
+   O áudio do vídeo é transcrito automaticamente utilizando o modelo Whisper da OpenAI.
 
-## Requisitos do Sistema
+3. **Tradução de Texto**  
+   O texto transcrito é traduzido para o idioma escolhido pelo usuário usando a biblioteca Google Translate.
 
-- Python 3.8 ou superior
-- `pip` instalado para gerenciar dependências
-- FFmpeg instalado (necessário para MoviePy)
+4. **Geração de Áudio Traduzido**  
+   O texto traduzido é convertido em áudio utilizando a biblioteca Google Text-to-Speech (gTTS).
 
-## Instalação e Configuração
+5. **Criação do Vídeo Final**  
+   O áudio traduzido é sincronizado com o vídeo original, criando um novo vídeo com o áudio na língua desejada.
 
-1. **Clone o repositório**
+6. **Exibição dos Resultados**  
+   O vídeo traduzido, a transcrição original e o texto traduzido são exibidos para o usuário.
+
+## Requisitos e Configuração
+
+Antes de executar o programa, certifique-se de que os seguintes requisitos estão atendidos:
+
+- **Python 3.8 ou superior**
+- **FFmpeg instalado** (necessário para processamento de vídeos com MoviePy)
+- As seguintes bibliotecas Python:
+  - `gradio==5.13.0`
+  - `gTTS==2.5.4`
+  - `openai-whisper`
+  - `googletrans==4.0.2`
+  - `moviepy==1.0.3`
+  - `numpy==1.22.0`
+
+### Instalação
+
+1. **Clone o repositório**  
    ```bash
-   git clone <URL-do-repositório>
-   cd <nome-do-repositório>
+   git clone https://github.com/viniciusBalbi/VideoTranslate.git
+   cd https://github.com/viniciusBalbi/VideoTranslate.git
